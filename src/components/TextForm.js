@@ -12,6 +12,15 @@ const TextForm = (props) => {
         setText(newText)
     }
 
+    const handleClearClick = ()=>{
+        let newText = ''
+        setText(newText)
+    }
+
+    const handleCopyClick = ()=>{
+         navigator.clipboard.writeText(text);
+        }
+    
     const handleOnchange = (event)=>{
         setText(event.target.value)
     }
@@ -25,6 +34,8 @@ const TextForm = (props) => {
             </div>
             <button className="btn btn-danger mx-2" onClick={handleUpClick}>ToUpperCase</button>
             <button className="btn btn-danger mx-2" onClick={handleLoClick}>ToLowerCase</button>
+            <button className="btn btn-danger mx-2" onClick={handleClearClick}>Clear Text</button>
+            <button className="btn btn-danger mx-2" onClick={handleCopyClick}>Copy Text</button>
         </div>
         <div className="container">
             <h1>Your text summery</h1>
