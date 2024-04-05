@@ -1,35 +1,24 @@
 import React, { useState } from 'react'
 
-const About = () => {
-    const [mystyle, setMyStyle] = useState( {
-        color: 'black',
-        backgroundColor: 'white'
-    })
- const [btntext, setBtnText] = useState('Enable Dark mode')
-    const toggleStyle = () =>{
-        if (mystyle.color === 'black') {
-            setMyStyle({
-                color: 'white',
-                backgroundColor: 'black',
-                border: '1px solid white'
-            })
-            setBtnText('Enable Light Mode')
-        }
-        else{
-            setMyStyle({
-                color: 'black',
-                backgroundColor: 'white'
-            })
-            setBtnText('Enable Dark Mode')
-        }
+const About = (props) => {
+    // const [mystyle, setMyStyle] = useState( {
+    //     color: 'black',
+    //     backgroundColor: 'white'
+    // })
+
+    let mystyle = {
+        color: props.mode ==='dark'? 'white': 'black',
+        backgroundColor: props.mode === 'dark'?'black':'white',
+        border: '2px solid',
+        borderColor: props.mode === 'dark'?'blue':'white'
     }
-   
+    
     return (
         <div className='container' style={mystyle}>
             <h1>About Us</h1>
             <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
-                    <h2 className="accordion-header">
+                    <h2 className="accordion-header" >
                         <button className="accordion-button" type="button" style={mystyle} data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Accordion Item #1
                         </button>
@@ -65,9 +54,9 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className="container my-3">
+            {/* <div className="container my-3">
                 <button type='button' onClick={toggleStyle} className='btn btn-primary'>{btntext}</button>
-            </div>
+            </div> */}
         </div>
     )
 }
